@@ -1,0 +1,75 @@
+// _functions.scss
+
+// Hàm điều chỉnh độ sáng/tối của màu sắc
+// Dùng để làm sáng hoặc tối một màu sắc cụ thể dựa trên giá trị $amount (nếu > 0 là làm sáng, < 0 là làm tối)
+@function adjust-color($color, $amount) {
+    @if ($amount > 0) {
+      @return lighten($color, $amount);
+    }
+    @else {
+      @return darken($color, abs($amount));
+    }
+  }
+  
+  // Hàm chuyển đổi PX sang REM
+  // Hỗ trợ thiết kế responsive, chuyển đổi px sang rem dựa trên $base-font-size mặc định (16px)
+  @function px-to-rem($px, $base-font-size: 16px) {
+    @return ($px / $base-font-size) * 1rem;
+  }
+  
+  // Hàm chuyển đổi REM sang PX
+  // Dùng để chuyển ngược lại từ rem về px dựa trên $base-font-size mặc định (16px)
+  @function rem-to-px($rem, $base-font-size: 16px) {
+    @return $rem * $base-font-size;
+  }
+  
+  // Hàm tạo tỷ lệ chiều rộng và chiều cao (Aspect Ratio)
+  // Giữ tỷ lệ chiều rộng và chiều cao cố định cho phần tử dựa trên $width và $height đầu vào
+  @function aspect-ratio($width, $height) {
+    @return ($height / $width) * 100%;
+  }
+  
+  // Hàm tạo gradient từ hai màu sắc
+  // Dùng để tạo hiệu ứng background gradient giữa hai màu ($color1 và $color2) theo hướng chỉ định ($direction)
+  @function generate-gradient($color1, $color2, $direction: 'to right') {
+    @return linear-gradient($direction, $color1, $color2);
+  }
+  
+  // Hàm tính toán khoảng cách giữa hai giá trị
+  // Hỗ trợ tính khoảng cách giữa hai giá trị kích thước (ví dụ: khoảng cách giữa các phần tử)
+  @function spacing($value1, $value2) {
+    @return abs($value1 - $value2);
+  }
+  
+  // Hàm tạo bóng mờ (box-shadow)
+  // Tạo bóng mờ cho các phần tử dựa trên các giá trị đầu vào như độ lệch $x, $y, độ mờ $blur và màu $color
+  @function generate-shadow($x, $y, $blur, $color) {
+    @return #{$x}px #{$y}px #{$blur}px $color;
+  }
+  
+  // Hàm điều chỉnh độ trong suốt của màu sắc (opacity)
+  // Điều chỉnh độ trong suốt cho màu sắc $color dựa trên giá trị $opacity (từ 0 đến 1)
+  @function adjust-opacity($color, $opacity) {
+    @return rgba($color, $opacity);
+  }
+  
+  // Hàm scale kích thước phần tử
+  // Hỗ trợ scale kích thước (ví dụ padding, margin) dựa trên hệ số $factor để tạo responsive
+  @function scale-size($size, $factor) {
+    @return $size * $factor;
+  }
+  
+  // Hàm lấy màu từ danh sách màu
+  // Truy xuất màu sắc từ danh sách màu được định nghĩa sẵn dựa trên $key
+  $colors: (
+    "primary": #2196f3,
+    "secondary": #ff5722,
+    "success": #4caf50,
+    "danger": #f44336,
+    "warning": #ff9800,
+  );
+  
+  @function color($key) {
+    @return map-get($colors, $key);
+  }
+  

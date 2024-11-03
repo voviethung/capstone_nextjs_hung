@@ -1,0 +1,13 @@
+.videoContainer {
+    max-width: 800px; /* Giới hạn chiều rộng tối đa cho video */
+    margin: 0 auto; /* Căn giữa video trên trang */
+    background-color: #000; /* Màu nền phía sau video */
+  
+    video {
+      display: block;
+      width: 100%;
+      border-radius: 10px; /* Tạo góc bo tròn cho video */
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3); /* Tạo hiệu ứng đổ bóng */
+    }
+  }
+  

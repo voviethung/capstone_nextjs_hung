@@ -1,0 +1,9 @@
+// _buttons.scss
+@import '../abstracts/mixins';
+.button-primary {
+    @include mButton($text-base, $fw-bold, $text-white, $primary-300, $p-3, none, 0.25rem, $primary-200, $text-light);
+}
+
+.button-secondary {
+    @include mButton($text-base, $fw-bold, $text-dark, $primary-100, $p-3, none, 0.25rem, $primary-200, $text-light);
+}

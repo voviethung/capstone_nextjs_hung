@@ -1,0 +1,84 @@
+.featuresList {
+    padding: 40px 20px;
+    text-align: center;
+  
+    h2 {
+      font-size: 1.8rem;
+      margin-bottom: 40px;
+    }
+  
+    .scrollContainer {
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
+  
+    .features {
+      display: flex;
+      overflow-x: hidden; /* Ẩn thanh cuộn ngang */
+      scroll-behavior: smooth;
+      gap: 20px;
+      padding-bottom: 10px;
+      margin: 0 40px; /* Để tránh việc nút cuộn chồng lên thẻ */
+    }
+  
+    .feature {
+      flex: 1;
+      min-width: 250px;
+      text-align: center;
+      padding: 20px;
+      background-color: #f9f9f9;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  
+      img {
+        width: 50px;
+        height: 50px;
+        margin-bottom: 15px;
+      }
+  
+      h3 {
+        font-size: 1.2rem;
+        margin-bottom: 10px;
+      }
+  
+      p {
+        font-size: 0.9rem;
+        color: #666;
+      }
+  
+      &:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+      }
+    }
+  
+    .scrollButtonLeft,
+    .scrollButtonRight {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background-color: #333;
+      color: white;
+      border: none;
+      border-radius: 50%;
+      padding: 10px;
+      font-size: 1.5rem;
+      cursor: pointer;
+      transition: background-color 0.3s;
+  
+      &:hover {
+        background-color: #555;
+      }
+    }
+  
+    .scrollButtonLeft {
+      left: 10px;
+    }
+  
+    .scrollButtonRight {
+      right: 10px;
+    }
+  }
+  

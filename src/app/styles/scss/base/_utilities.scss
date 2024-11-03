@@ -1,0 +1,41 @@
+// _utilities.scss
+
+// Margin utilities
+.m-0 {
+    margin: 0 !important;
+  }
+  
+  .m-1 {
+    margin: $m-1 !important;
+  }
+  
+  .m-2 {
+    margin: $m-2 !important;
+  }
+  
+  // Padding utilities
+  .p-0 {
+    padding: 0 !important;
+  }
+  
+  .p-1 {
+    padding: $p-1 !important;
+  }
+  
+  .p-2 {
+    padding: $p-2 !important;
+  }
+  
+  // Text alignment utilities
+  .text-center {
+    text-align: center !important;
+  }
+  
+  .text-left {
+    text-align: left !important;
+  }
+  
+  .text-right {
+    text-align: right !important;
+  }
+  

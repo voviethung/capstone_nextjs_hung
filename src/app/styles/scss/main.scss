@@ -1,0 +1,32 @@
+// main.scss
+
+// Abstracts (Import các phần trừu tượng: functions, mixins, variables)
+@import './abstracts/_functions';
+@import './abstracts/_mixins';
+@import './abstracts/_variables';
+
+// Base styles (các style cơ bản)
+@import './base/_reset';
+@import './base/_typography';
+@import './base/_utilities';
+
+// Component styles (các style của từng component)
+@import './components/_buttons';
+@import './components/_forms';
+@import './components/_cards';
+
+// Layout styles (các style của layout)
+@import './layouts/_grid';
+@import './layouts/_header';
+@import './layouts/_footer';
+
+
+//Biến css --ten_bien
+body{
+    --color:#{$text-dark}; //chữ đen nền xanh
+    --bg: #{$bg-primary-300};
+}
+body.dark {
+    --color:#{$text-primary-300}; //chữ đen nền xanh
+    --bg: #{$bg-dark};
+}

@@ -1,0 +1,38 @@
+// _typography.scss
+
+body {
+  font-size: $text-base;
+  font-family: 'Macan', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  color: $text-dark;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: $fw-bold;
+  color: $text-dark;
+}
+
+h1 {
+  font-size: $text-6xl;
+}
+
+h2 {
+  font-size: $text-5xl;
+}
+
+h3 {
+  font-size: $text-4xl;
+}
+
+h4 {
+  font-size: $text-3xl;
+}
+
+p {
+  margin-bottom: $m-4;
+}

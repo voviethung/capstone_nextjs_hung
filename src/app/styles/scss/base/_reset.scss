@@ -1,0 +1,28 @@
+// _reset.scss
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body, h1, h2, h3, h4, h5, h6, p, ol, ul, figure {
+  margin: 0;
+  padding: 0;
+  font: inherit;
+  color: inherit;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+a {
+    text-decoration: none;
+    color: inherit; // Đảm bảo liên kết sử dụng cùng màu với văn bản
+  }

@@ -1,0 +1,86 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    padding: 40px 20px;
+  
+    h2 {
+      font-size: 1.8rem;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+  }
+  
+  .scrollContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+  
+  .testimonialContent {
+    display: flex;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+    gap: 20px;
+    width: 100%;
+    padding: 20px;
+  }
+  
+  .testimonial {
+    display: flex;
+    gap: 20px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    min-width: 70%;
+  
+    video {
+      border-radius: 10px;
+    }
+  
+    .testimonialText {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+  
+      p {
+        font-weight: bold;
+        margin-bottom: 10px;
+      }
+  
+      blockquote {
+        font-style: italic;
+        color: #666;
+      }
+    }
+  }
+  
+  .scrollButtonLeft,
+  .scrollButtonRight {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: #333;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    padding: 10px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  
+    &:hover {
+      background-color: #555;
+    }
+  }
+  
+  .scrollButtonLeft {
+    left: 10px;
+  }
+  
+  .scrollButtonRight {
+    right: 10px;
+  }
+  
