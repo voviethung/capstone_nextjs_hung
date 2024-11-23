@@ -9,5 +9,6 @@
             "savePath":"",
             "savePathReplacementPairs": null
         }
-    ]
+    ],
+    "CodeGPT.apiKey": "CodeGPT Plus Beta"
 }

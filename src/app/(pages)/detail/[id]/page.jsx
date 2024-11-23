@@ -1,39 +1,40 @@
-import { getProductByIdAction } from '@/app/actions/service/productApi';
+import { getCongViecChiTietByIdAction } from '@/app/actions/service/productApi';
+import Link from "next/link";
 import React from 'react'
 import Image from 'next/image';
 import Navbar from '@/app/components/Navbar';
 import CategoryMenu from '@/app/components/CategoryMenu';
-export async function generateMetadata({ params }) {
-  const prodDetail = await getProductByIdAction(params.id);
+// export async function generateMetadata({ params }) {
+//   const prodDetail = await getCongViecChiTietByIdAction(params.id);
 
-  return {
-    title: `${prodDetail.name} - Product Detail`,
-    description: prodDetail.description,
-    openGraph: {
-      title: prodDetail.name,
-      description: prodDetail.description,
-      url: `https://yourwebsite.com/products/${params.id}`,
-      images: [
-        {
-          url: prodDetail.image,
-          width: 500,
-          height: 500,
-          alt: prodDetail.alias,
-        },
-      ],
-    },
-    twitter: {
-      card: 'summary_large_image',
-      title: prodDetail.name,
-      description: prodDetail.description,
-      images: [prodDetail.image],
-    },
-  };
-}
+//   return {
+//     title: `${prodDetail.name} - Product Detail`,
+//     description: prodDetail.description,
+//     openGraph: {
+//       title: prodDetail.name,
+//       description: prodDetail.description,
+//       url: `https://yourwebsite.com/products/${params.id}`,
+//       images: [
+//         {
+//           url: prodDetail.image,
+//           width: 500,
+//           height: 500,
+//           alt: prodDetail.alias,
+//         },
+//       ],
+//     },
+//     twitter: {
+//       card: 'summary_large_image',
+//       title: prodDetail.name,
+//       description: prodDetail.description,
+//       images: [prodDetail.image],
+//     },
+//   };
+// }
 const Detail = async (props) => {
   //props param của server component
   const { params } = props;
-  const prodDetail = await getProductByIdAction(params.id);
+  const [prodDetail] = await getCongViecChiTietByIdAction(params.id);
   console.log('data', prodDetail);
   return (
     <div className='container'>
@@ -47,17 +48,19 @@ const Detail = async (props) => {
             {/* Breadcrumb */}
             <nav aria-label="breadcrumb">
               <ol className="breadcrumb">
-                <li className="breadcrumb-item"><a href="#">Home</a></li>
-                <li className="breadcrumb-item"><a href="#">Programming & Tech</a></li>
-                <li className="breadcrumb-item"><a href="#">Website Builders & CMS</a></li>
-                <li className="breadcrumb-item active" aria-current="page">Full Website Creation</li>
+                <li className="breadcrumb-item"><Link href="/">Home</Link></li>
+                <li className="breadcrumb-item"><Link href="#">{prodDetail.tenLoaiCongViec}</Link></li>
+                <li className="breadcrumb-item"><a href="#">{prodDetail.tenNhomChiTietLoai}</a></li>
+                <li className="breadcrumb-item active" aria-current="page">{prodDetail.tenChiTietLoai}</li>
               </ol>
             </nav>
-            <h2 className="fw-bold">I will do custom css, html, javascript, PHP coding</h2>
+            <h2 className="fw-bold">{prodDetail.congViec.tenCongViec}</h2>
             <div className="d-flex align-items-center mt-2">
-              <img src="https://via.placeholder.com/50" className="rounded-circle me-2" alt="Seller Profile" />
+              {/* <Image width={2} height={2} style={{ width: '10%', height: 'auto' }} crossOrigin="anonymous" quality={100} src={prodDetail.avatar} alt={prodDetail.tenNguoiTao} className='w-100 d-block' /> */}
+              <img src={prodDetail.avatar} className="rounded-circle me-2" alt="Seller Profile" style={{ width: '25px', height: '25px' }}
+              />
               <div className="d-flex align-items-center">
-                <strong className="me-2">nofilrazzaq</strong>
+                <strong className="me-2">{prodDetail.tenNguoiTao}</strong>
                 <span className="text-muted me-2">Top Rated Seller</span>
                 <span className="text-warning me-1">
                   {/* Biểu tượng sao */}
@@ -67,8 +70,8 @@ const Detail = async (props) => {
                   <i className="fa fa-star" />
                   <i className="fa fa-star" />
                 </span>
-                <span className="text-warning me-2">5</span>
-                <span className="text-muted me-2">(335)</span>
+                <span className="text-warning me-2">{prodDetail.congViec.saoCongViec}</span>
+                <span className="text-muted me-2">{prodDetail.congViec.danhGia}</span>
                 <span className="text-muted me-2">| 4 Orders in Queue</span>
                 <span className="badge bg-success text-white">
                   Fiverr's Choice
@@ -80,7 +83,7 @@ const Detail = async (props) => {
               <p><span className="fw-bold text-success">Buyers keep returning!</span> nofilrazzaq has an exceptional number of repeat buyers.</p>
               {/* Banner Image/Video */}
               <div className="mb-3">
-                <img src="https://via.placeholder.com/600x300" className="img-fluid rounded" alt="Service Image" />
+                <Image width={500} height={500} style={{ width: '10%', height: 'auto' }} crossOrigin="anonymous" quality={100} src={prodDetail.congViec.hinhAnh} alt={prodDetail.tenNguoiTao} className='w-100 d-block' />
                 <h5 className="mb-2">“Quality of UI/UX exceeded my expectations”</h5>
 
                 {/* Testimonial Section */}
@@ -634,16 +637,6 @@ const Detail = async (props) => {
               <button className="btn btn-outline-secondary w-20">Get a Quote</button>
             </div>
           </div>
-        </div>
-      </div>
-
-      <div className='row'>
-        <div className='col-md-3'>
-          <Image width={500} height={500} style={{ width: '100%', height: 'auto' }} crossOrigin="anonymous" quality={100} src={prodDetail.image} alt={prodDetail.alias} className='w-100' />
-        </div>
-        <div className='col-md-8'>
-          <h3>{prodDetail.name}</h3>
-          <p>{prodDetail.description}</p>
         </div>
       </div>
     </div>

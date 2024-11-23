@@ -14,6 +14,12 @@ const nextConfig = {
                 port: '',
                 hostname: 'fiverrnew.cybersoft.edu.vn', // Thêm tên miền này
                 pathname: '**'
+            },
+            {
+                protocol: 'http',
+                port: '',
+                hostname: 'sc04.alicdn.com', // Thêm tên miền này
+                pathname: '**'
             }
         ],
         formats:['image/avif','image/webp']

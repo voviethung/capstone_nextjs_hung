@@ -71,34 +71,74 @@ const CategoryDetail = async (props) => {
                     </div>
                     {/* Phần Dịch vụ Phổ biến */}
 
-                    <h2 className='fw-semibold'>Most Popular in {loaiCongViec.tenLoaiCongViec}</h2>
-                    {/* Lặp qua dsNhomChiTietLoai */}
-                    {loaiCongViec.dsNhomChiTietLoai.map((nhomChiTietLoai) => (
-                        <div key={nhomChiTietLoai.id} className="d-flex align-items-center position-relative">
-                            <ScrollButton direction="left" targetId="scrollContainer" />
-                            <div
-                                id="scrollContainer"
-                                className="d-flex flex-nowrap overflow-auto px-5"
-                                style={{ scrollBehavior: 'smooth', gap: '1rem', scrollbarWidth: 'none' }}
-                            >
-                                <div className="d-inline-block bg-danger card border-0 shadow-sm px-3 py-2 flex-shrink-0" style={{ minWidth: '200px', boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)', }}>
-                                    <div className="d-flex align-items-center ">
-                                        {/* <span className="me-2" style={{ fontSize: '1.5rem' }}>{nhomChiTietLoai.icon}</span> */}
-                                        <h6 className="mb-0">{nhomChiTietLoai.tenNhom} <span>→</span></h6>
+                    <h2 className="fw-semibold">Most Popular in {loaiCongViec.tenLoaiCongViec}</h2>
+                    <div className="d-flex align-items-center position-relative">
+                        {/* Nút cuộn trái */}
+                        <ScrollButton direction="left" targetId="scrollContainer" />
+                        {/* Container cuộn */}
+                        <div
+                            id="scrollContainer"
+                            className="d-flex flex-nowrap overflow-auto px-5"
+                            style={{
+                                scrollBehavior: 'smooth',
+                                gap: '1rem',
+                                scrollbarWidth: 'none',
+                                alignItems: 'center', // Đảm bảo căn giữa
+                            }}
+                        >
+                            {loaiCongViec.dsNhomChiTietLoai.map((nhomChiTietLoai) => (
+                                <div
+                                    key={nhomChiTietLoai.id}
+                                    className="d-inline-block card border-0 shadow-sm px-3 py-2 flex-shrink-0"
+                                    style={{
+                                        minWidth: '200px',
+                                        boxShadow: '0px 0px 20px 0px rgba(255,255,255,0)',
+                                    }}
+                                >
+                                    <div className="d-flex align-items-center">
+                                        <h6 className="mb-0">
+                                            {nhomChiTietLoai.tenNhom} <span>→</span>
+                                        </h6>
                                     </div>
                                 </div>
-
-                            </div>
-                            <ScrollButton direction="right" targetId="scrollContainer" />
+                            ))}
                         </div>
-                    ))}
+                        {/* Nút cuộn phải */}
+                        <ScrollButton
+                            direction="right"
+                            targetId="scrollContainer"
+                            className="position-absolute"
+                            style={{
+                                right: 0,
+                                top: '50%',
+                                transform: 'translateY(-50%)', // Đảm bảo căn giữa theo chiều dọc
+                            }}
+                        />
+                    </div>
 
                     <h2 className='fw-semibold'>Explore {loaiCongViec.tenLoaiCongViec}</h2>
                     <div className='row'>
                         {loaiCongViec.dsNhomChiTietLoai.map((nhomChiTietLoai) => (
                             <div key={nhomChiTietLoai.id} className="col-md-3 mt-2">
-                                <div className='card'>
-                                    <Image alt={nhomChiTietLoai.tenNhom} quality={100} crossOrigin={'anonymous'} width={500} height={500} style={{ width: '100%', height: 'auto' }} />
+                                <div className='card' style={{
+                                    height: '100%'
+                                }}>
+                                    <img
+                                        src={nhomChiTietLoai.hinhAnh}
+                                        alt={nhomChiTietLoai.tenNhom}
+                                        style={{ width: '100%', height: 'auto' }}
+                                    />
+
+                                    {/* <Image
+                                        width={500}
+                                        height={500}
+                                        style={{ width: '100%', height: 'auto' }}
+                                        crossOrigin="anonymous"
+                                        quality={100}
+                                        src={nhomChiTietLoai.hinhAnh}
+                                        alt={nhomChiTietLoai.tenNhom}
+                                        className='w-100'
+                                    /> */}
                                     <div className='card-body'>
                                         <h4>{nhomChiTietLoai.tenNhom}</h4>
                                         {/* Lặp qua dsChiTietLoai của mỗi nhóm */}
