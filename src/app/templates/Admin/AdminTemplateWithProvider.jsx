@@ -197,11 +197,15 @@
 // //     onClick: () => setCollapsed(!collapsed),
 // //   });
 // // }
+"use client"
 import { MenuFoldOutlined, MenuUnfoldOutlined } from "@ant-design/icons";
 import { Layout, message } from "antd";
 import React, { useEffect, useRef, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { Navigate, NavLink, Outlet, useNavigate } from "react-router-dom";
+import { Provider, useDispatch, useSelector } from "react-redux";
+import { store } from "../../redux/configStore";
+// import { Navigate, NavLink, Outlet, useNavigate } from "react-router-dom";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
 import CustomLogo from "../../assets/CustomLogo/CustomLogo";
 import UserUpdate from "../../HOC/UserUpdate/UserUpdate";
 import {
@@ -218,12 +222,20 @@ import { toast } from "react-toastify";
 
 const { Header, Sider, Content } = Layout;
 
-export default function AdminTemplate() {
+function AdminTemplateWithProvider() {
+  return (
+    <Provider store={store}>
+      <AdminTemplate/>
+    </Provider>
+  );
+}
+
+function AdminTemplate() {
   const [collapsed, setCollapsed] = useState(false);
   const dispatch = useDispatch();
   const refUpdateUserDialog = useRef(null);
   const { userLogin } = useSelector((state) => state.userReducer);
-  const navigate = useNavigate();
+  const router = useRouter();
 
   useEffect(() => {
     dispatch(getProfileApi());
@@ -233,11 +245,23 @@ export default function AdminTemplate() {
     dispatch(getAllCongViecApi());
   }, [dispatch]);
 
+  // const role = getStore(ROLE_lOGIN);
+  // if (role !== "ADMIN" && role !== "admin") {
+  //   toast.warning("Tài Khoản chưa đủ quyền truy cập Admin!");
+  //   return router.push("/login")
+  // }
+
   const role = getStore(ROLE_lOGIN);
-  if (role !== "ADMIN" && role !== "admin") {
+  if (role !== "USER" && role !== "user") {
     toast.warning("Tài Khoản chưa đủ quyền truy cập Admin!");
-    return <Navigate to="/login" />;
+    return router.push("/login")
   }
+
+// const role = getStore(ID_LOGIN);
+//   if (role !== 6599 && role !== 6599) {
+//     toast.warning("Tài Khoản chưa đủ quyền truy cập Admin!");
+//     return router.push("/login")
+//   }
 
   return (
     <Layout>
@@ -249,28 +273,28 @@ export default function AdminTemplate() {
             </div>
             <ul className="ul mt-3 d-block">
               <li className="li mt-5 mx-3">
-                <NavLink
+                <Link
                   className="text-dark active"
-                  to="/admin/qlnd"
+                  href="/admin/qlnd"
                   aria-current="page"
                 >
                   Manage User
-                </NavLink>
+                </Link>
               </li>
               <li className="li mt-5 mx-3">
-                <NavLink className="text-dark" to="/admin/qlcv">
+                <Link className="text-dark" href="/admin/qlcv">
                   Manage Job
-                </NavLink>
+                </Link>
               </li>
               <li className="li mt-5 mx-3">
-                <NavLink className="text-dark" to="/admin/qllcv">
+                <Link className="text-dark" href="/admin/qllcv">
                   Manage JobType
-                </NavLink>
+                </Link>
               </li>
               <li className="li mt-5 mx-3">
-                <NavLink className="text-dark" to="/admin/qldv">
+                <Link className="text-dark" href="/admin/qldv">
                   Manage Service
-                </NavLink>
+                </Link>
               </li>
             </ul>
           </div>
@@ -289,9 +313,9 @@ export default function AdminTemplate() {
                 onClick: () => setCollapsed(!collapsed),
               }
             )}
-            <NavLink to="/">
+            <Link href="/">
               <CustomLogo color="#404145" />
-            </NavLink>
+            </Link>
           </div>
           <div className="dropdown d-flex justify-content-between align-items-center">
             <div
@@ -319,7 +343,7 @@ export default function AdminTemplate() {
                   className="dropdown-item"
                   type="button"
                   onClick={() => {
-                    navigate("/profile");
+                    router.push("/profile");
                   }}
                 >
                   Cập Nhật Thông Tin
@@ -335,7 +359,7 @@ export default function AdminTemplate() {
                     clearStore(ID_LOGIN);
                     clearStore(ROLE_lOGIN);
                     dispatch(signOutAction(userLogin));
-                    navigate("/");
+                    router.push("/");
                   }}
                 >
                   Đăng Xuất
@@ -352,9 +376,13 @@ export default function AdminTemplate() {
             height: "100vh",
           }}
         >
-          <Outlet />
+          {/* <Outlet /> */}
+          ịdlhlj
         </Content>
+
+        bjbjmnnbb
       </Layout>
     </Layout>
   );
 }
+export default AdminTemplateWithProvider

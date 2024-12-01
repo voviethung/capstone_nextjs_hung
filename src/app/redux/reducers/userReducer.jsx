@@ -13,6 +13,8 @@ import {
 } from "../../util/setting";
 import { toast } from "react-toastify";
 // import { history } from "../../index";
+// import { useRouter } from "next/router";
+
 
 // Khởi tạo state ban đầu
 const initialState = {
@@ -45,12 +47,12 @@ export default userReducer.reducer;
 // -------------------------- API Actions -----------------------
 
 // Đăng ký
-export const registerApi = (user) => {
+export const registerApi = (user, router) => {
   return async () => {
     try {
       const result = await http.post(`/auth/signup`, user);
       toast.success("Đăng kí tài khoản thành công !");
-      history.push(`/login`);
+      router.push(`/login`);
     } catch (err) {
       console.log(err);
       toast.error(err.response?.data?.content || "Đăng ký thất bại");
@@ -59,7 +61,7 @@ export const registerApi = (user) => {
 };
 
 // Đăng nhập
-export const loginApi = (userLogin) => {
+export const loginApi = (userLogin, router) => {
   return async (dispatch) => {
     try {
       const result = await http.post(`/auth/signin`, userLogin);
@@ -77,9 +79,9 @@ export const loginApi = (userLogin) => {
       // Chuyển hướng
       const role = getStore(ROLE_lOGIN);
       if (role === "ADMIN" || role === "admin") {
-        history.push("/admin");
+        router.push("/admin");
       } else {
-        history.push("/profile");
+        router.push("/profile");
       }
 
       toast.success("Đăng nhập tài khoản thành công !");

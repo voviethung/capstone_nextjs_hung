@@ -1,3 +1,4 @@
+// import { ToastContainer } from "react-toastify";
 import localFont from "next/font/local";
 import "./globals.css";
 import "./assets/scss/styles.scss"
@@ -8,6 +9,9 @@ import { Roboto, Inter } from 'next/font/google';
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
 import CategoriesMenu from "./components/CategoriesMenu/CategoriesMenu";
+import HeaderTsWithProvider from "./components/HeaderTsWithProvider/HeaderTsWithProvider";
+import CategoriesMenuTsWithProvider from "./components/CategoriesMenuTsWithProvider/CategoriesMenuTsWithProvider";
+import HeaderHomeTemplate from "./templates/HeaderHomeTemplate"
 // import CategoriesMenu from "./components/CategoriesMenu/CategoriesMenu";
 // import HeaderHomeTemplate from "./templates/HeaderHomeTemplate";
 // import './styles/scss/main.scss';
@@ -55,10 +59,14 @@ export default function RootLayout({ children }) {
         />
       </head>
       <body className={`${roboto.className}`}>
-        <Header/>
-        <CategoriesMenu/>
+        {/* <HeaderTsWithProvider/>
+        <CategoriesMenuTsWithProvider/> */}
+        {/* <Header/> */}
+        {/* <CategoriesMenu/> */}
+        <HeaderHomeTemplate/>
         {children}
         <Footer />
+        {/* <ToastContainer position="top-right" autoClose={3000} /> */}
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossOrigin="anonymous"></script>
       </body>
     </html>

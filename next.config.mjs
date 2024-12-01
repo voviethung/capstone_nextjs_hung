@@ -1,3 +1,4 @@
+// import path from 'path'; // Import module path
 /** @type {import('next').NextConfig} */
 const nextConfig = {
     // assetPrefix:'https://cdn.jsdelivr.net'
@@ -22,8 +23,12 @@ const nextConfig = {
                 pathname: '**'
             }
         ],
-        formats:['image/avif','image/webp']
-    }
+        formats:['image/avif','image/webp'],
+    },
+    // webpack: (config) => {
+    //     config.resolve.alias['@app'] = path.resolve(__dirname, 'src/app');
+    //     return config;
+    //   },
 };
 
 export default nextConfig;

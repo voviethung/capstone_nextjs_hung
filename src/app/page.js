@@ -11,6 +11,7 @@ import ReactCarousel from "./components/ReactCarousel/ReactCarousel.jsx";
 import SlickCarousel from "./components/SlickCarousel/SlickCarousel";
 import Slider from "./components/Slider/Slider";
 import VideoModal from "./components/Video/VideoModal";
+import SearchCarousel from "./components/SearchCarousel/SearchCasousel";
 // import { AppDispatch } from "../../redux/configStore";
 import { timeout } from "./util/setting";
 
@@ -81,23 +82,40 @@ const Home = async () => {
               <h1>
                 Find the perfect <i> freelance </i> services for your business
               </h1>
-
-              {/* <form className="d-flex" role="search" onSubmit={handelSubmit}> */}
-              <form className="d-flex" role="search" onSubmit=''>
-
+              <SearchCarousel />
+              {/* <form className="d-flex" role="search" onSubmit={(e) => {
+                e.preventDefault();
+                router.push(`/result?keyword=${keyword}`)
+              }}>
                 <input
+                  value={keyword}
+                  onChange={(e) => {
+                    setKeyword(e.target.value);
+                  }}
                   className="form-control"
                   type="search"
                   name="searchInputCarousel"
                   placeholder='Try "building mobile app"'
                   aria-label="Search"
-                  onChange=''
-                  // onChange={handelChange}
                 />
                 <button className="btn btn-success" type="submit">
                   Search
                 </button>
-              </form>
+              </form> */}
+              {/* <form className="d-flex" role="search" onSubmit={(e) => {
+                e.preventDefault();
+                router.push(`/result?keyword=${keyword}`)
+              }}>
+                <input
+                  value={keyword}
+                  onChange={(e) => {
+                    setKeyword(e.target.value);
+                  }}
+                  className="form-control me-sm-2" type="text" placeholder="What service are you looking for today?" />
+                <button type="submit" className="btn btn-success my-2 my-sm-0">
+                  Search
+                </button>
+              </form> */}
 
               <div className="d-flex popular">
                 <span>Popular: </span>

@@ -1,6 +1,6 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
-import { CongViecChiTiet } from "../../redux/models/JobModel";
+import Link from "next/link";
+// import { CongViecChiTiet } from "../../redux/models/JobModel";
 
 
 
@@ -25,9 +25,9 @@ export const ServiceCard = ({ service }) => {
           </div>
         </div>
         <div className="service-name">
-          <NavLink to={`/jobDetail/${service.id}`}>
+          <Link href={`/jobdetail/${service.id}`}>
             {service.congViec?.tenCongViec}
-          </NavLink>
+          </Link>
         </div>
         <div className="rating-star d-flex align-items-center">
           <span className="star">

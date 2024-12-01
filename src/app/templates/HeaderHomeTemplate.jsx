@@ -1,14 +1,16 @@
 import React from "react";
-import CategoriesMenu from "../components/CategoriesMenu/CategoriesMenu";
-import Header from "../components/Header/Header";
+import HeaderTsWithProvider from "../components/HeaderTsWithProvider/HeaderTsWithProvider";
+import CategoriesMenuTsWithProvider from "../components/CategoriesMenuTsWithProvider/CategoriesMenuTsWithProvider"
+
 // import {Outlet} from "react-router-dom";
 
 
 export default function HeaderHomeTemplate({}) {
   return (
     <div>
-      <Header />
-      <CategoriesMenu />
+      <HeaderTsWithProvider/>
+      <CategoriesMenuTsWithProvider/>
+      
     </div>
   );
 }

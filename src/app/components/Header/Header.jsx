@@ -403,7 +403,7 @@
 "use client"
 import { useState } from 'react';
 import Link from "next/link"; 
-import useToggleDropdown from '@/app/hooks/useToggleDropdown';
+import useToggleDropdown from '../../hooks/useToggleDropdown';
 import SearchBar from '../SearchBar/SearchBar';
 // import styles from '../../app/styles/scss/_Navbar.module.scss'; // Import SCSS
 // import SearchBar from "./SearchBar"

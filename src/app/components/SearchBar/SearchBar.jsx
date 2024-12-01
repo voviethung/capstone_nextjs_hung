@@ -8,12 +8,16 @@ export default function SearchBar() {
     const [keyword, setKeyword] = useState('');
     const router = useRouter();
     return (
-        <form className="d-flex my-2 my-lg-0" onSubmit={(e) => {
-            router.push(`/result/${keyword}`)
+        <form className="d-flex my-2 my-lg-0" role="search" onSubmit={(e) => {
+            e.preventDefault();
+            router.push(`/result?keyword=${keyword}`)
         }}>
-            <input onChange={(e) => {
+            <input 
+            value={keyword}
+            onChange={(e) => {
                 setKeyword(e.target.value);
-            }} className="form-control me-sm-2" type="text" placeholder="What service are you looking for today?" />
+            }}   
+            className="form-control me-sm-2" type="search" placeholder="What service are you looking for today?" />
             <button type="submit" className="btn btn-success my-2 my-sm-0">
                 Search
             </button>
